@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>install</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<p><a name="installation"></a></p>
+<h2>Maxwell Render Toolbox Installer</h2>
+<p>The current version of Maxwell Render Toolbox supports Maxwell Render 3.2.0.4 and higher, and works on Windows 7+ 64-bit, Mac OS X 10.9, 10.10, or 10.11, and RHEL / Fedora / Centos Linux.</p>
+<p><img src="images/maxwell-render-toolbox-windows-install.png" alt="Windows Installer" /></p>
+<p>The Windows based Maxwell Render Toolbox installer will place the software in the folder:</p>
+<p><code>C:\Program Files\MaxwellRenderToolbox\</code>  
+</p>
+<p><img src="images/windows-install-folder.png" alt="Installation Folder" /></p>
+<h3>Start Menu items</h3>
+<p>A Maxwell Render Toolbox Start menu folder is created that has a link to the uninstaller, the <code>Maxwell Render Toolbox Guide</code> HTML documentation, the <code>Examples</code> folder, and the <code>Maxwell Render Toolbox</code> folder.</p>
+<p><img src="images/start-menu-item.png" alt="Start Menu Items" /></p>
+<p><a name="windows-install"></a></p>
+<h3>Windows Manual Install</h3>
+<h4>Step 1.</h4>
+<p>Expand the <strong>MaxwellRenderToolbox-v0.1-windows-mac-linux-manual-install.zip</strong> archive to your desktop.</p>
+<h4>Step 2.</h4>
+<p>Move the expanded Maxwell Render Toolbox program folder to the following location on your hard drive:  
+</p>
+<p><code>C:\Program Files\MaxwellRenderToolbox\</code></p>
+<p><a name="mac-install"></a></p>
+<h3>Mac OS X Manual Install</h3>
+<h4>Step 1.</h4>
+<p>Expand the <strong>MaxwellRenderToolbox-v0.1-windows-mac-linux-manual-install.zip</strong> archive to your desktop.</p>
+<h4>Step 2.</h4>
+<p>Move the expanded Maxwell Render Toolbox program folder to the following location on your hard drive:  
+</p>
+<p><code>/Applications/MaxwellRenderToolbox/</code></p>
+<h4>Step 3.</h4>
+<p>Open the <code>/Applications/MaxwellRenderToolbox/</code> folder and double click on the file <code>mac_tool.zip</code> to expand the ZIP archive. This will create a new folder called <code>mac_tools</code> inside of the MaxwellRenderToolbox directory <code>/Applications/MaxwellRenderToolbox/mac_tools/</code>. This folder has the Mac OS X 10.9, 10.10, and 10.11 compatible versions of several command line tools used by Maxwell Render Toolbox.</p>
+<h4>Step 4.</h4>
+<p>Download and install the Mac OS X build of the Imagemagick graphics library.</p>
+<p>The Cactus Lab website has an Imagemagick for Mac OS X build that works with Mac OS X 10.5 to 10.10. You want the first download item <code>ImageMagick 6.9.1-0 for Mac OS X 10.5 – 10.10</code> listed on the Cactus Lab webpage:</p>
+<p><a href="http://cactuslab.com/imagemagick/">http://cactuslab.com/imagemagick/</a></p>
+<p>The Imagemagick Project also hosts a Mac OS X Yosemite build version of the library:</p>
+<p><a href="http://www.imagemagick.org/script/binary-releases.php#macosx">http://www.imagemagick.org/script/binary-releases.php#macosx</a></p>
+<p>Expand and run the Imagemagick graphics library installer.</p>
+<p>If you have a copy of <strong>Mac Ports</strong> or <strong>Brew</strong> installed on your Mac you can also build your own version of Imagicmagick that will work with Maxwell Render Toolbox.</p>
+<p><a name="linux-install"></a></p>
+<h3>Linux Manual Install</h3>
+<h4>Step 1.</h4>
+<p>Expand the <strong>MaxwellRenderToolbox-v0.1-windows-mac-linux-manual-install</strong> archive to your desktop.</p>
+<h4>Step 2.</h4>
+<p>Move the expanded Maxwell Render Toolbox program folder to the following location on your hard drive:  
+</p>
+<p><code>/opt/MaxwellRenderToolbox</code></p>
+<h4>Step 6.</h4>
+<p>Install the Hugin (Panotools), Imagemagick, and xclip libraries using YUM:</p>
+<p>yum install ImageMagick 
+yum install hugin
+yum install xclip</p>
+<p><strong>Note:</strong> If you have a choice when installing Hugin (Panotools) on Linux, you should go for the Hugin 2013 or newer versions if you want better GPU accelerated warping. The Hugin 2011 release does work but the GPU warping features weren't as optimized as the 2013+ releases.</p>
+<p><strong>Note:</strong> The xclip library is used to allow the scripts to copy resources into you clipboard buffer so you can paste logs files and information into a text editor or other tools.</p>
+<h4>Step 7.</h4>
+<p>Install the ffmpeg library using YUM with a 3rd party repository:</p>
+<p>yum install ffmpeg</p>
+<p><strong>Note:</strong> Redhat / Fedora / Centos Linux users will have to add a repository like <strong><a href="http://rpmfusion.org/">RPM Fusion</a></strong> to their system since ffmpeg isn't available in the standard yum distribution. On the RPM Fusion website you want the add the <a href="http://rpmfusion.org/Configuration">RPM Fusion free</a> repository to yum.</p>
+<p>Ubuntu / Debian Linux users can also use the pre-compiled <a href="https://www.ffmpeg.org/download.html#build-linux">ffmpeg package from the ffmpeg website directly</a>.</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,31 @@
+%Image::ExifTool::UserDefined = (
+    'Image::ExifTool::XMP::Main' => {
+        GPano => {
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::UserDefined::GPano',
+            },
+        },
+    },
+);
+
+%Image::ExifTool::UserDefined::GPano = (
+    GROUPS => { 0 => 'XMP', 1 => 'XMP-GPano', 2 => 'Image' },
+    NAMESPACE => { 'GPano' => 'http://ns.google.com/photos/1.0/panorama/' },
+    WRITABLE => 'string',
+    UsePanoramaViewer => { Writable => 'string' },
+    ProjectionType => { Writable => 'string' },
+    PoseHeadingDegrees => { Writable => 'string' },
+    CroppedAreaLeftPixels => { Writable => 'string' },
+    FullPanoWidthPixels => { Writable => 'string' },
+    FirstPhotoDate => { Writable => 'string' },
+    CroppedAreaImageHeightPixels => { Writable => 'string' },
+    FullPanoHeightPixels => { Writable => 'string' },
+    SourcePhotosCount => { Writable => 'string' },
+    CroppedAreaImageWidthPixels => { Writable => 'string' },
+    LastPhotoDate => { Writable => 'string' },
+    CroppedAreaTopPixels => { Writable => 'string' },
+    LargestValidInteriorRectLeft => { Writable => 'string' },
+    LargestValidInteriorRectTop => { Writable => 'string' },
+    LargestValidInteriorRectWidth => { Writable => 'string' },
+    LargestValidInteriorRectHeight => { Writable => 'string' },
+);
