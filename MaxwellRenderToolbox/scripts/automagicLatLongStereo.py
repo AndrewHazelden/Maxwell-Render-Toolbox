@@ -1,6 +1,6 @@
 # Automagic LatLong Stereo for Maxwell Studio
 # --------------------------------------------
-# 2015-12-08 12.06 PM v0.4
+# 2015-12-08 12.53 PM v0.4
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -417,14 +417,14 @@ def aml_renderStereo(mxsFilePath, centerView, leftView, rightView, imageExtensio
 if __name__ == "__main__":
 
   # Choose a Maxwell MXS scene file to process:
-  mxsFilePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
-  # mxsFilePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
+  # mxsFilePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
+  mxsFilePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
   # mxsFilePath = '/opt/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
   # mxsFilePath = '/home/andrew/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
 
   # Choose a LatLong Stereo Separation Texture Map:
-  separationTexturePath = '/Applications/MaxwellRenderToolbox/sourceimages/separation_map.png'
-  # separationTexturePath = 'C:/Program Files//MaxwellRenderToolbox/sourceimages/separation_map.png'
+  # separationTexturePath = '/Applications/MaxwellRenderToolbox/sourceimages/separation_map.png'
+  separationTexturePath = 'C:/Program Files//MaxwellRenderToolbox/sourceimages/separation_map.png'
   # separationTexturePath = '/opt/MaxwellRenderToolbox/sourceimages/separation_map.png'
   # separationTexturePath = '/home/andrew/MaxwellRenderToolbox/sourceimages/separation_map.png'
 
