@@ -1,6 +1,6 @@
 /*
 
-PanoView v1.0.2 for Maxwell Render - 2015-10-21 
+PanoView v1.0.3 for Maxwell Render - 2015-12-08
 by Andrew Hazelden
 www.andrewhazelden.com
 andrew@andrewhazelden.com
@@ -9,14 +9,24 @@ This script will send the current Maxwell Render generated panoramic 360 image d
 
 
 PanoView Wiki Page:
-https://github.com/zicher3d-org/domemaster-stereo-shader/wiki/PanoView-for-Maxwell-Render
+https://github.com/AndrewHazelden/Maxwell-Render-Toolbox/wiki/PanoView-for-Maxwell-Render
 
 
 Installation:
 
-Step 1. Place this Maxwell PanoView.ms javascript file in your Maxwell 3 scripts folder:
+Step 1.  The PanoView.ms script can be loaded and run from inside the MaxwellRenderToolbox's scripts folder, or if you want to, you can copy the PanoView.ms  script to your Maxwell Render program's "Next Limit/Maxwell 3/scripts" folder for easier access.
 
-C:\Program Files\Next Limit\Maxwell 3\scripts
+Windows
+C:\Program Files\MaxwellRenderToolbox\scripts\PanoView.ms
+
+Linux
+/opt/MaxwellRenderToolbox/scripts/PanoView.ms
+or
+/home/MaxwellRenderToolbox/scripts/PanoView.ms
+
+Mac
+/Applications/MaxwellRenderToolbox/scripts/PanoView.ms
+
 
 Step 2. Launch Maxwell Render, and then display the script window.
 

@@ -1,6 +1,6 @@
 # Automagic LatLong Stereo for Maxwell Studio
 # --------------------------------------------
-# 2015-12-08 10.07 am v0.4
+# 2015-12-08 12.06 PM v0.4
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -12,21 +12,18 @@
 
 # Script Installation
 # -------------------
-# Copy the "stereo" folder to your Maxwell 3.2 scripts directory:
+# The automagicLatLongStereo.py python script can be loaded and run from inside the MaxwellRenderToolbox's scripts folder, or if you want to, you can copy the python script to Maxwell Render's "NextLimit/Maxwell 3/scripts" folder for easier access from PyMaxwell.
 
 # Windows
-# C:/Program Files/Next Limit/Maxwell 3/scripts/
+# C:/Program Files/MaxwellRenderToolbox/scripts/automagicLatLongStereo.py
 
 # Linux
-# /opt/maxwell-3.2/scripts/
+# /opt/MaxwellRenderToolbox/scripts/automagicLatLongStereo.py
 # or
-# $home/maxwell-3.2/scripts/
-# or
-# $home/maxwell64-3.2/scripts/
+# $HOME/MaxwellRenderToolbox/scripts/automagicLatLongStereo.py
 
 # Mac
-# /Applications/Maxwell 3/scripts/
-
+# /Applications/MaxwellRenderToolbox/scripts/automagicLatLongStereo.py
 
 # How do I use the script?
 # ------------------------
@@ -420,16 +417,16 @@ def aml_renderStereo(mxsFilePath, centerView, leftView, rightView, imageExtensio
 if __name__ == "__main__":
 
   # Choose a Maxwell MXS scene file to process:
-  mxsFilePath = '/Applications/Maxwell 3/scripts/stereo/CubeX.mxs'
-  # mxsFilePath = 'C:/Program Files/Next Limit/Maxwell 3/scripts/stereo/CubeX.mxs'
-  #mxsFilePath = '/opt/maxwell-3.2/scripts/stereo/CubeX.mxs'
-  #mxsFilePath = '/home/andrew/maxwell-3.2/scripts/stereo/CubeX.mxs'
+  mxsFilePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
+  # mxsFilePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
+  # mxsFilePath = '/opt/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
+  # mxsFilePath = '/home/andrew/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
 
   # Choose a LatLong Stereo Separation Texture Map:
-  separationTexturePath = '/Applications/Maxwell 3/scripts/stereo/textures/separation_map.png'
-  #separationTexturePath = 'C:/Program Files/Next Limit/Maxwell 3/scripts/stereo/textures/separation_map.png'
-  #separationTexturePath = '/opt/maxwell-3.2/scripts/stereo/textures/separation_map.png'
-  #separationTexturePath = '/home/andrew/maxwell-3.2/scripts/stereo/textures/separation_map.png'
+  separationTexturePath = '/Applications/MaxwellRenderToolbox/sourceimages/separation_map.png'
+  # separationTexturePath = 'C:/Program Files//MaxwellRenderToolbox/sourceimages/separation_map.png'
+  # separationTexturePath = '/opt/MaxwellRenderToolbox/sourceimages/separation_map.png'
+  # separationTexturePath = '/home/andrew/MaxwellRenderToolbox/sourceimages/separation_map.png'
 
 
   # Choose a stereo depth ratio.
@@ -466,7 +463,6 @@ if __name__ == "__main__":
   	if ok == 1:
   	  # Render the stereo project files
   	  aml_renderStereo(mxsFilePath, centerView, leftView, rightView, 'png')
-
   else:
     print('[MXS File Not Found] ' + mxsFilePath)
 
