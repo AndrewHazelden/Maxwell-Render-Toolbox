@@ -1,6 +1,6 @@
 # MXI to GearVR Cubic Panorama Converter for Maxwell Studio
 # ----------------------------------------------------------
-# 2015-12-11 01.33 AM v0.1
+# 2015-12-11 06.15 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com

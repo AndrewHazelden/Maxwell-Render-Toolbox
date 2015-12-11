@@ -18,6 +18,6 @@ Step 2. Launch PyMaxwell and open up the `mxi2photosphere.py` python script.
 
 Step 3. Edit the "mxiImagePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXI scene file. You can also specify a directory of MXI files and they will be processed one at a time into Google Photospheres.
 
-Step 4. Select the Script > Run menu item in PyMaxwell.
+Step 4. Select the **Script > Run** menu item in PyMaxwell.
 
 Step 5. A Google Photosphere ready LatLong panorama has been generated at this point with the name of `<Scene>_render.jpg` and is saved in the same folder as the original .mxi image.
