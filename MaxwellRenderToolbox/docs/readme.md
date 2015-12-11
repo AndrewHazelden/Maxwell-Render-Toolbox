@@ -15,11 +15,11 @@ Google+: [plus.google.com/+AndrewHazelden/](https://plus.google.com/+AndrewHazel
   - [Windows Manual Install](install.html#windows-install)
   - [Mac OS X Manual Install](install.html#mac-install)
   - [Linux Manual Install](install.html#linux-install)
-- Maxwell Render Toolbox Tools:
+- **Maxwell Render Toolbox Tools:**
   - [Automagic Latlong](automagic_latlong_stereo.html)
   - [PanoView for Maxwell Render](panoview_for_maxwell_render.html)
-  - MXI to GearVR Cubic Panorama Converter
-  - MXI to Google Photosphere
+  - [MXI to GearVR Cubic Panorama Converter](mxi2gearvrcube.html)
+  - [MXI to Google Photosphere](mxi2photosphere.html)
 - [Version History](version_history.html#version-history)
 - [Supporting Open Source Libraries](opensource_tools.html)
 

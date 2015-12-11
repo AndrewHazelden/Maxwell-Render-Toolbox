@@ -1,6 +1,6 @@
 # Automagic LatLong Stereo for Maxwell Studio v0.1#
-2015-12-07 10.00 am
-
+2015-12-11 1.37 AM
+----
 By Andrew Hazelden  
 Email: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)  
 Blog: [http://www.andrewhazelden.com](http://www.andrewhazelden.com)  
@@ -12,7 +12,7 @@ The automagicLatLongStereo.py script is used to quickly prepare your Maxwell Stu
 
 ## Script Installation ##
 
-Copy the "stereo" folder to your Maxwell 3.2 scripts directory:
+You can either run the script from inside the MaxwellRenderToolbox scripts folder, or optionally copy the script file to your Maxwell 3.2 scripts directory:
 
 **Windows**
 
@@ -44,11 +44,9 @@ Edit your Maxwell MXS scene file so there is only one camera. Set the focus dist
 
 ![Maxwell Studio](images/mxs_in_maxwell_studio.png)
 
-Step 2.
-Launch PyMaxwell and open up the `automagicLatLongStereo.py` python script.
+Step 2. Launch PyMaxwell and open up the `automagicLatLongStereo.py` python script.
 
-Step 3.
-Edit the "mxsFilePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXS scene file.
+Step 3. Edit the "mxsFilePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXS scene file.
 
 Edit the "separationTexturePath" variable in the main function near the bottom of this script and specify your LatLong Stereo separation map texture image.
 
@@ -56,7 +54,7 @@ Edit the the camera views to render section in the main function near the bottom
 
 ![Edit the Script](images/pymaxwell_script_editing.png)
 
-Step 4. Select the Script > Run menu item in PyMaxwell.
+Step 4. Select the **Script > Run** menu item in PyMaxwell.
 
 ![Run the Script](images/pymaxwell_run_script.png)
 

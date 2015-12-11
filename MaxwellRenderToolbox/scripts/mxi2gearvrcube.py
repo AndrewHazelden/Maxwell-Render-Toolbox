@@ -1,19 +1,13 @@
 # MXI to GearVR Cubic Panorama Converter for Maxwell Studio
 # ----------------------------------------------------------
-# 2015-12-11 00.55 AM v0.1
+# 2015-12-11 01.33 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
 
 # Description
 # -----------
-# This script will convert a set of .mxi files that hold LatLong Stereo panoramas into a  Gear VR stereo cubemap style horizontal strip panorama. The script uses PyMel, Panotools, and Imagemagick to do the conversion. 
-
-# Scripting ToDo List
-# --------------------
-# Search the directory for matching .mxs/.mxi scene names that end in _L and _R
-# Process the _L and _R frames and do it in a way that would work on image sequences
-# Make GearVR panoramas for each set of matching _L and _R frames
+# The `mxi2gearvrcube.py` script will convert a set of Maxwell .mxi based LatLong Stereo panoramas into a Gear VR stereo cubemap style horizontal strip panorama. The script uses PyMaxwell, Panotools, and Imagemagick to do the panoramic conversions.
 
 
 # Script Installation
@@ -44,6 +38,9 @@
 # Edit the "mxiLeftImagePath" and the "mxiRightImagePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXI scene file.
 
 # Step 4. Select the Script > Run menu item in PyMaxwell.
+
+# Step 5. A Gear VR style stereo cubemap has been generated at this point with the name of `<Scene>_GearVR_Stereo.png` and is saved in the same folder as the original .mxi image. The folder where the new Gear VR image has been saved to will be opened up automatically in your desktop file browser.
+
 # -----------------------------------------
 
 from pymaxwell import *
@@ -78,7 +75,7 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
   mtr_temp = mtr_tempImagesDirectory()
 
   # Merged GearVR Stereo cubic panorama imagename
-  output_gearvr = leftDirName + os.sep + gearVRImagenamePrefix + '.' + outputPanoramaFileExt
+  output_gearvr = leftScenePathNoExt + gearVRImagenamePrefix + '.' + outputPanoramaFileExt
 
   # Imagemagick path:
   filenameNativePath = ''
@@ -521,19 +518,19 @@ def mtr_openDirectory(filenameNativePath):
   # Check OS platform for Windows/Mac/Linux Paths
   if mxPlatform == 'Windows':
     # Check if the program is running on Windows 
-    os.system('explorer "' + filenameNativePath + '"')
+    os.system('explorer "' + dirName + '"')
   elif mxPlatform == 'Linux':
     # Check if the program is running on Linux
-    os.system('nautilus "' + filenameNativePath + '" &')
+    os.system('nautilus "' + dirName + '" &')
   elif mxPlatform == 'Mac':
     # Check if the program is running on MAC
-    os.system('open "' + filenameNativePath + '" &')
+    os.system('open "' + dirName + '" &')
   else:
     # Create the empty variable as a fallback mode
-    filenameNativePath = ''
+    dirName = ''
     
-  print('[Opening the Temporary Images Directory] ' + filenameNativePath)
-  return filenameNativePath
+  print('[Opening the Directory] ' + dirName)
+  return dirName
   
   
 # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
@@ -617,7 +614,7 @@ if __name__ == "__main__":
   # mxiRightImagePath = '/home/andrew/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxi'
   
   # Choose the filename prefix for the rendered GearVR cubic panorama - without the file extension or file directory path
-  gearVRImagenamePrefix = 'CubeX_GearVR'
+  gearVRImagenamePrefix = '_GearVR_Stereo'
   
   # Choose a file format for the converted panorama 
   outputPanoramaFileExt = 'png'
@@ -638,4 +635,7 @@ if __name__ == "__main__":
     print('[MXI Left Image File Not Found] ' + mxiLeftImagePath)
 
   # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
-  mtr_openTempImagesDirectory()
+  #mtr_openTempImagesDirectory()
+  
+  # Open a folder window up using your desktop file browser
+  mtr_openDirectory(mxiLeftImagePath)

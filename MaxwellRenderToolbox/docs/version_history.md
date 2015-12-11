@@ -1,10 +1,12 @@
 <a name="version-history"></a>
 # Version History #
+----
 
 ## Version 0.1.1 - 2015-12-11 ##
 
 - Added the MXI to GearVR Cubic Panorama Converter script "mxi2gearvrcube.py"
 - Added the MXI to Google Photosphere panoramic metadata embedding script "mxi2photosphere.py"
+- Updated the docs
 
 ## Version 0.1 - 2015-12-08 ##
 
