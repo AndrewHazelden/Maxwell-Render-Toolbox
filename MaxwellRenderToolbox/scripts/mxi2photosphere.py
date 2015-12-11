@@ -1,6 +1,6 @@
-# MXI 2 Photosphere for PyMaxwell
+# MXI to Google Photosphere for PyMaxwell
 # ---------------------------------
-# 2015-12-10 11.15 AM v0.1
+# 2015-12-11 00.59 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -17,7 +17,7 @@
 # Render out a LatLong format panoramic image and save the .mxi file.
 
 # Step 2.
-# Launch PyMaxwell and open up the `mxi2photosphere.py.py` python script.
+# Launch PyMaxwell and open up the `mxi2photosphere.py` python script.
 
 # Step 3.
 # Edit the "mxiImagePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXI scene file.
