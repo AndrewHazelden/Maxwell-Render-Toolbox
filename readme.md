@@ -20,6 +20,10 @@ The Maxwell Render Toolbox is a suite of python scripts and tools that simplify 
 
 Maxwell Render Toolbox supports Maxwell Render 3.2 on Windows 64-Bit, Mac OS X, and Linux 64-Bit systems.
 
+## Wiki ##
+
+[Check out the new Wiki index page](https://github.com/AndrewHazelden/Maxwell-Render-Toolbox/wiki) for more details about the tools in the Maxwell Render Toolbox and how to use them.
+
 ## Open Source License ##
 
 *The Maxwell Render Toolbox is distributed under a GPL v3 license.*
