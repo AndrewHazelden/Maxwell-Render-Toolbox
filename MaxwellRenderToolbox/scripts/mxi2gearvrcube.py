@@ -1,6 +1,6 @@
 # MXI to GearVR Cubic Panorama Converter for Maxwell Studio
 # ----------------------------------------------------------
-# 2015-12-11 06.15 AM v0.1
+# 2015-12-11 07.29 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -35,7 +35,7 @@
 # Launch PyMaxwell and open up the `mxi2gearvrcube.py` python script.
 
 # Step 3.
-# Edit the "mxiLeftImagePath" and the "mxiRightImagePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXI scene file.
+# Edit the "mxsLeftImagePath" and the "mxsRightImagePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXI scene file.
 
 # Step 4. Select the Script > Run menu item in PyMaxwell.
 
@@ -53,19 +53,19 @@ import os
 import sys
 
 # Convert a pair of LatLong Stereo images into a GearVR stereo cubemap output format:
-# Example: mrt_latlong2gearvr('/CubeX_L.mxi', '/CubeX_R.mxi', 'CubeX_GearVR_Stereo', 'png')
-def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefix, outputPanoramaFileExt):
+# Example: mrt_latlong2gearvr('/CubeX_L.mxs', '/CubeX_R.mxs', '_GearVR_Stereo', 'png')
+def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefix, outputPanoramaFileExt):
   # Check the current operating system
   mxPlatform = mtr_getPlatform()
   
   # Find out the current scene file
-  leftDirName = os.path.dirname(mxiLeftImagePath)
-  leftSceneName = os.path.basename(mxiLeftImagePath)
-  leftScenePathNoExt = os.path.splitext(mxiLeftImagePath)[0]
+  leftDirName = os.path.dirname(mxsLeftImagePath)
+  leftSceneName = os.path.basename(mxsLeftImagePath)
+  leftScenePathNoExt = os.path.splitext(mxsLeftImagePath)[0]
 
-  rightDirName = os.path.dirname(mxiRightImagePath)
-  rightSceneName = os.path.basename(mxiRightImagePath)
-  rightScenePathNoExt = os.path.splitext(mxiRightImagePath)[0]
+  rightDirName = os.path.dirname(mxsRightImagePath)
+  rightSceneName = os.path.basename(mxsRightImagePath)
+  rightScenePathNoExt = os.path.splitext(mxsRightImagePath)[0]
 
   # ----------------------------------------------
   # ----------------------------------------------
@@ -126,11 +126,11 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
     if view == 'L':
       # Left View Imagery
       maxwell_rendered_input_image = leftScenePathNoExt + '.' + outputPanoramaFileExt
-      mxiImagetoLoad = mxiLeftImagePath
+      mxiImagetoLoad = mxsLeftImagePath
     else:
       # Right View Imagery
       maxwell_rendered_input_image = rightScenePathNoExt + '.' + outputPanoramaFileExt
-      mxiImagetoLoad = mxiRightImagePath
+      mxiImagetoLoad = mxsRightImagePath
     
     # Find out the current left view scene settings
     scene = Cmaxwell(mwcallback)
@@ -164,12 +164,11 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
       print('[Maxwell Rendered LatLong Image Missing Error] "' + maxwell_rendered_input_image + '"')
       return 0
     
-  
     # The LatLong format panorama converted into a tiff image format
     latLongTiffFrame = mtr_temp + 'mtr_latlong_' + view + '.' + nonaInputExt
   
     # Convert the maxwell image to tiff for the panoramic warping stage
-    systemCommand = imagemagick + ' '
+    systemCommand  = '"' + imagemagick + '" '
     systemCommand += '"' + maxwell_rendered_input_image + '" '
     systemCommand += '-density 72 -units pixelsperinch '
     systemCommand += '"' + latLongTiffFrame + '" '
@@ -184,7 +183,10 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
 
     result = ''
     print('[Imagemagick Frame Conversion to TIFF] ' + systemCommand + '\n')
-    result = os.system(systemCommand)
+    if mxPlatform == 'Windows':
+      result = os.system('"' + systemCommand + '"')
+    else:
+      result = os.system(systemCommand)
     #args = shlex.split(systemCommand)
     #print('[Split Args] ' + str(args))
     #result = subprocess.Popen(args, shell=True)
@@ -214,7 +216,7 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
   
     # Write PT Stitcher scripts
     # 6 Face Cubemap to LatLong Conversion
-    systemCommand = '"' + nona + '"'
+    systemCommand = '"' + nona + '" '
 
     # Nona options:
     # -g = gpu warping -v means quiet output
@@ -251,7 +253,10 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
 
     result = ''
     print('[Nona Stitcher] ' + systemCommand + '\n')
-    result = os.system(systemCommand)
+    if mxPlatform == 'Windows':
+      result = os.system('"' + systemCommand + '"')
+    else:
+      result = os.system(systemCommand)
     #args = shlex.split(systemCommand)
     #print('[Split Args] ' + str(args))
     #result = subprocess.Popen(args, shell=True)
@@ -332,7 +337,10 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
 
   result = ''
   print('[Imagemagick Conversion Command] ' + systemCommand + '\n')
-  result = os.system(systemCommand)
+  if mxPlatform == 'Windows':
+    result = os.system('"' + systemCommand + '"')
+  else:
+    result = os.system(systemCommand)
   #args = shlex.split(systemCommand)
   #print('[Split Args] ' + str(args))
   #result = subprocess.Popen(args, shell=True)
@@ -346,6 +354,7 @@ def mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefi
   print('\n-------------------------------------------------------------')
   print('LatLong Stereo to GearVR Stereo Cubic Image Conversion Complete')
 
+  return 1
 
 # Find out the MaxwellRenderToolbox temporary images directory:
 # Example mtr_temp = mtr_tempImagesDirectory()
@@ -517,13 +526,14 @@ def mtr_openDirectory(filenameNativePath):
   
   # Check OS platform for Windows/Mac/Linux Paths
   if mxPlatform == 'Windows':
+    dirName = dirName.replace("/","\\")
     # Check if the program is running on Windows 
     os.system('explorer "' + dirName + '"')
   elif mxPlatform == 'Linux':
     # Check if the program is running on Linux
     os.system('nautilus "' + dirName + '" &')
   elif mxPlatform == 'Mac':
-    # Check if the program is running on MAC
+    # Check if the program is running on Mac
     os.system('open "' + dirName + '" &')
   else:
     # Create the empty variable as a fallback mode
@@ -549,7 +559,7 @@ def mtr_openTempImagesDirectory():
     filenameNativePath = mtr_tempImagesDirectory()
     os.system('nautilus "' + filenameNativePath + '" &')
   elif mxPlatform == 'Mac':
-    # Check if the program is running on MAC
+    # Check if the program is running on Mac
     filenameNativePath = mtr_tempImagesDirectory()
     os.system('open "' + filenameNativePath + '" &')
   else:
@@ -597,21 +607,17 @@ if __name__ == "__main__":
   print('http://www.andrewhazelden.com/blog')
   print('-----------------------------------------------\n')
   
-  # Choose a Maxwell Left Camera View MXI image to process:
-  mxiLeftImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxs'
-  
-  # mxiLeftImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxi'
-  # mxiLeftImagePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxi'
-  # mxiLeftImagePath = '/opt/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxi'
-  # mxiLeftImagePath = '/home/andrew/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxi'
+  # Choose a Maxwell Left Camera View MXS to process:
+  # mxsLeftImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxs'
+  mxsLeftImagePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxs'
+  # mxsLeftImagePath = '/opt/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxs'
+  # mxsLeftImagePath = '/home/andrew/MaxwellRenderToolbox/examples/stereo/CubeX_L.mxs'
 
-  # Choose a Maxwell Right Camera View MXI image to process:
-  mxiRightImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxs'
-  
-  # mxiRightImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxi'
-  # mxiRightImagePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxi'
-  # mxiRightImagePath = '/opt/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxi'
-  # mxiRightImagePath = '/home/andrew/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxi'
+  # Choose a Maxwell Right Camera View MXS to process:
+  # mxsRightImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxs'
+  mxsRightImagePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxs'
+  # mxsRightImagePath = '/opt/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxs'
+  # mxsRightImagePath = '/home/andrew/MaxwellRenderToolbox/examples/stereo/CubeX_R.mxs'
   
   # Choose the filename prefix for the rendered GearVR cubic panorama - without the file extension or file directory path
   gearVRImagenamePrefix = '_GearVR_Stereo'
@@ -623,19 +629,21 @@ if __name__ == "__main__":
   # outputPanoramaFileExt = 'exr'
  
   # Launch the automagic stereo camera set up command
-  if os.path.exists(mxiLeftImagePath):
-    if os.path.exists(mxiRightImagePath):
+  if os.path.exists(mxsLeftImagePath):
+    if os.path.exists(mxsLeftImagePath):
       # Generate the GearVR Stereo Cubic Output
-      print('[MXI Left File] ' + mxiLeftImagePath)
-      print('[MXI Right File] ' + mxiRightImagePath)
-      ok = mrt_latlong2gearvr(mxiLeftImagePath, mxiRightImagePath, gearVRImagenamePrefix, outputPanoramaFileExt)
+      print('[MXS Left File] ' + mxsLeftImagePath)
+      print('[MXS Right File] ' + mxsLeftImagePath)
+      ok = mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefix, outputPanoramaFileExt)
+      
+      if ok == 1:
+        # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
+        #mtr_openTempImagesDirectory()
+        
+        # Open a folder window up using your desktop file browser
+        mtr_openDirectory(mxsLeftImagePath)
     else:
-      print('[MXI Right Image File Not Found] ' + mxiRightImagePath)
+      print('[MXS Right Image File Not Found] ' + mxsLeftImagePath)
   else:
-    print('[MXI Left Image File Not Found] ' + mxiLeftImagePath)
+    print('[MXS Left Image File Not Found] ' + mxsLeftImagePath)
 
-  # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
-  #mtr_openTempImagesDirectory()
-  
-  # Open a folder window up using your desktop file browser
-  mtr_openDirectory(mxiLeftImagePath)

@@ -1,6 +1,6 @@
 # MXI to Google Photosphere for PyMaxwell
 # ---------------------------------
-# 2015-12-11 01.16 AM v0.1
+# 2015-12-11 07.27 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -121,7 +121,10 @@ def mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees):
   
   result = ''
   print('[Adding Exif Data] ' + command + '\n')
-  result = os.system(command)
+  if mtrPlatform == 'Windows':
+    result = os.system('"' + command + '"')
+  else:
+    result = os.system(command)
   #args = shlex.split(command)
   #print (args)
   #result = subprocess.Popen(args, shell=True)
@@ -129,12 +132,10 @@ def mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees):
   # Wait for this task to finish
   #result.wait()
 
-
-  # Open the folder that holds the image using your desktop file browser
-  mtr_openDirectory(imageFileName)
-      
   # Add a newline between each time the mrt_processMXI() function is run on a directory of MXI files
   print('\n')
+  
+  return 1
 
 
 # Write out an args file for Exiftool
@@ -245,7 +246,7 @@ def mtr_openTempImagesDirectory():
     filenameNativePath = mtr_tempImagesDirectory()
     os.system('nautilus "' + filenameNativePath + '" &')
   elif mtrPlatform == 'Mac':
-    # Check if the program is running on MAC
+    # Check if the program is running on Mac
     filenameNativePath = mtr_tempImagesDirectory()
     os.system('open "' + filenameNativePath + '" &')
   else:
@@ -256,28 +257,29 @@ def mtr_openTempImagesDirectory():
   return filenameNativePath
 
 
+
 # Open a folder window up using your desktop file browser
 # Example: mtr_openDirectory('/Applications/')
 def mtr_openDirectory(filenameNativePath):
-  mtrPlatform = mtr_getPlatform()
+  mxPlatform = mtr_getPlatform()
   
   # Convert a path to a file into a directory path
   dirName = ''
-  if os.path.isdir(filenameNativePath):
-    dirName = filenameNativePath
-  else:
-    # print('[Selecting the Parent Folder]')
+  if os.path.isfile(filenameNativePath):
     dirName = os.path.dirname(filenameNativePath)
+  else:
+    dirName = filenameNativePath
   
   # Check OS platform for Windows/Mac/Linux Paths
-  if mtrPlatform == 'Windows':
+  if mxPlatform == 'Windows':
+    dirName = dirName.replace("/","\\")
     # Check if the program is running on Windows 
     os.system('explorer "' + dirName + '"')
-  elif mtrPlatform == 'Linux':
+  elif mxPlatform == 'Linux':
     # Check if the program is running on Linux
     os.system('nautilus "' + dirName + '" &')
-  elif mtrPlatform == 'Mac':
-    # Check if the program is running on MAC
+  elif mxPlatform == 'Mac':
+    # Check if the program is running on Mac
     os.system('open "' + dirName + '" &')
   else:
     # Create the empty variable as a fallback mode
@@ -366,8 +368,8 @@ if __name__ == "__main__":
   # ---------------------------------------------------
   # Or process a whole directory of Maxwell MXI files
   # ---------------------------------------------------
-  mxiImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/'
-  # mxiImagePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/'
+  # mxiImagePath = '/Applications/MaxwellRenderToolbox/examples/stereo/'
+  mxiImagePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/'
   # mxiImagePath = '/opt/MaxwellRenderToolbox/examples/stereo/'
 
   # Google Photosphere panorama default heading angle in degrees
@@ -382,6 +384,13 @@ if __name__ == "__main__":
     # Load the MXI Image data into Maxwell
     print('[MXI File #' + str(mxiNumber) + '] ' + mxiImagePath)
     ok = mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees)
+
+    if ok == 1:
+      # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
+      #mtr_openTempImagesDirectory()
+          
+      # Open a folder window up using your desktop file browser
+      mtr_openDirectory(mxiImagePath)
   elif os.path.isdir(mxiImagePath):
     print('[Entering MXI Directory Processing Mode]')
     
@@ -397,9 +406,16 @@ if __name__ == "__main__":
       print('[MXI File #' + str(mxiNumber) + '] ' + mxiFileDirPath)
       # Load the MXI Image data into Maxwell
       ok = mrt_processMXI(mxiNumber, mxiFileDirPath, headingDegrees)
+
+      if ok == 1 and mxiNumber == 1:
+        # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
+        #mtr_openTempImagesDirectory()
+        
+        # Open a folder window up using your desktop file browser
+        mtr_openDirectory(mxiFileDirPath)
   else:
     print('[MXI File Not Found] ' + mxiImagePath)
     
   print('\n-------------------------------------------------------------')
   print('Google Photosphere Metadata Editing Complete')
-  
+
