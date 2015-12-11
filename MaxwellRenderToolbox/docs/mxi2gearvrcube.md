@@ -12,11 +12,11 @@ The `mxi2gearvrcube.py` script will convert a set of Maxwell .mxi based LatLong 
 
 ## How do I use the script? ##
 
-Step 1 .Render out a set of Left and Right view LatLong Stereo images and save the .mxi files.
+Step 1. Render out a set of Left and Right view LatLong Stereo images and save the .mxi files.
 
 Step 2. Launch PyMaxwell and open up the `mxi2gearvrcube.py` python script.
 
-Step 3. Edit the "mxiLeftImagePath" and the "mxiRightImagePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXI scene file. You can specify the 
+Step 3. Edit the "mxsLeftImagePath" and the "mxsRightImagePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXS scene file.
 
 Step 4. Select the **Script > Run** menu item in PyMaxwell.
 
