@@ -1,6 +1,6 @@
 # MXI to GearVR Cubic Panorama Converter for Maxwell Studio
 # ----------------------------------------------------------
-# 2015-12-11 07.29 AM v0.1
+# 2015-12-11 08.51 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -405,7 +405,7 @@ def mtr_generatePanotoolPtoFiles(imageWidth, imageHeight, cubicResolution, input
   ptscript_pline = 'p f0 w' + str(int(cubicResolution)) + ' h' + str(int(cubicResolution)) + ' v' + str(outputHorizFov) + ptscript_image_options + ' \n'
 
   # PT Stitcher 'i' = Input Image Attributes
-  ptscript_iline_back   = 'i f4 w' + str(int(imageWidth)) + ' h' + str(int(imageHeight)) + ' v' + str(inputHorizFOV) + ' r0 y0 p180 b0' + ' n"' + input_latlong + '"' + '\n'
+  ptscript_iline_back   = 'i f4 w' + str(int(imageWidth)) + ' h' + str(int(imageHeight)) + ' v' + str(inputHorizFOV) + ' r180 y0 p180 b0' + ' n"' + input_latlong + '"' + '\n'
   ptscript_iline_bottom = 'i f4 w' + str(int(imageWidth)) + ' h' + str(int(imageHeight)) + ' v' + str(inputHorizFOV) + ' r0 y0 p90 b0' + ' n"' + input_latlong + '"' + '\n'
   ptscript_iline_front  = 'i f4 w' + str(int(imageWidth)) + ' h' + str(int(imageHeight)) + ' v' + str(inputHorizFOV) + ' r0 y0 p0 b0' + ' n"' + input_latlong + '"' + '\n'
   ptscript_iline_left   = 'i f4 w' + str(int(imageWidth)) + ' h' + str(int(imageHeight)) + ' v' + str(inputHorizFOV) + ' r0 y90 p0 b0' + ' n"' + input_latlong + '"' + '\n'
