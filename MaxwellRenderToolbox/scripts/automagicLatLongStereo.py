@@ -1,6 +1,6 @@
 # Automagic LatLong Stereo for Maxwell Studio
 # --------------------------------------------
-# 2015-12-08 12.53 PM v0.4
+# 2015-12-12 07.13 AM v0.4
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com

@@ -1,6 +1,6 @@
 # MXI to Google Photosphere for PyMaxwell
 # ---------------------------------
-# 2015-12-11 07.27 AM v0.1
+# 2015-12-12 07.13 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -49,7 +49,7 @@ def mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees):
   mxi = CmaxwellMxi()
   
   # Check the operating system
-  mtrPlatform = mtr_getPlatform()
+  mrtPlatform = mrt_getPlatform()
 
   # Load the MXI Image data into Maxwell
   readHeaderOnly = 0
@@ -81,22 +81,22 @@ def mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees):
     print('[Writing Image to Disk] ' + imageFileName)
     
   # Generate the Args file for Exiftool
-  exifArgsFilePath = mtr_writeExiftoolArgsFile(imageFileName, width, height, headingDegrees)
+  exifArgsFilePath = mrt_writeExiftoolArgsFile(imageFileName, width, height, headingDegrees)
   
   filenameNativePath = ''
   exiftool = ''
   tee = ''
-  if mtrPlatform == 'Windows':
-    filenameNativePath = mtr_getMaxwellRenderToolboxBaseFolder() + 'tools' + os.sep
+  if mrtPlatform == 'Windows':
+    filenameNativePath = mrt_getMaxwellRenderToolboxBaseFolder() + 'tools' + os.sep
     tee = filenameNativePath + 'wintee' + os.sep + 'bin' + os.sep + 'wtee.exe'
     exiftool = filenameNativePath + 'exiftool' + os.sep + 'exiftool.exe'
-  elif mtrPlatform == 'Mac':
-    filenameNativePath = mtr_getMaxwellRenderToolboxBaseFolder() + 'mac_tools' + os.sep
+  elif mrtPlatform == 'Mac':
+    filenameNativePath = mrt_getMaxwellRenderToolboxBaseFolder() + 'mac_tools' + os.sep
     exiftool = filenameNativePath + 'exiftool' + os.sep + 'exiftool'
     tee = 'tee'
   else:
     # Linux
-    filenameNativePath = mtr_getMaxwellRenderToolboxBaseFolder() + 'linux_tools' + os.sep
+    filenameNativePath = mrt_getMaxwellRenderToolboxBaseFolder() + 'linux_tools' + os.sep
     exiftool = os.sep + 'usr' + os.sep + 'bin' + os.sep + 'exiftool'
     #exiftool = 'exiftool'
     tee = 'tee'
@@ -112,7 +112,7 @@ def mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees):
   command += ' "' + imageFileName + '" '
   
   # Redirect the output from the terminal to a log file
-  outputLog = mtr_tempImagesDirectory() + 'exiftoolOutputLog.txt'
+  outputLog = mrt_tempImagesDirectory() + 'exiftoolOutputLog.txt'
   
   # Customize the output log command for each platform
   command += ' ' + '2>&1 | "' + tee + '" -a ' + '"' + outputLog + '"'
@@ -121,7 +121,7 @@ def mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees):
   
   result = ''
   print('[Adding Exif Data] ' + command + '\n')
-  if mtrPlatform == 'Windows':
+  if mrtPlatform == 'Windows':
     result = os.system('"' + command + '"')
   else:
     result = os.system(command)
@@ -139,8 +139,8 @@ def mrt_processMXI(mxiNumber, mxiImagePath, headingDegrees):
 
 
 # Write out an args file for Exiftool
-# Example: mtr_writeExiftoolArgsFile('/latlong.mxi', 2048, 1024, 180 )  
-def mtr_writeExiftoolArgsFile(mxiImagePath, width, height, headingDegrees):
+# Example: mrt_writeExiftoolArgsFile('/latlong.mxi', 2048, 1024, 180 )  
+def mrt_writeExiftoolArgsFile(mxiImagePath, width, height, headingDegrees):
   import os
   import platform
 
@@ -160,11 +160,11 @@ def mtr_writeExiftoolArgsFile(mxiImagePath, width, height, headingDegrees):
   mxVersion = getPyMaxwellVersion()
   
   # Check the operating system
-  mtrPlatform = mtr_getPlatform()
+  mrtPlatform = mrt_getPlatform()
 
   # Write in the name of the MTR user
   exifOwnerName= 'Maxwell Render Toolbox User'
-  # exifOwnerName = mtr_getEXIFOwnerName()
+  # exifOwnerName = mrt_getEXIFOwnerName()
 
   exifScriptText  = '-n\n'
   exifScriptText += '-UsePanoramaViewer=True\n'
@@ -181,7 +181,7 @@ def mtr_writeExiftoolArgsFile(mxiImagePath, width, height, headingDegrees):
   exifScriptText += '-LargestValidInteriorRectWidth=' + str(int(width)) + '\n'
   exifScriptText += '-LargestValidInteriorRectHeight=' + str(int(height)) + '\n'
   exifScriptText += '-xmp:CreatorTool=Maxwell Render Toolbox\n'
-  exifScriptText += '-xmp:Software=Maxwell Render v' + str(mxVersion) +  ' on ' + mtrPlatform + '\n'
+  exifScriptText += '-xmp:Software=Maxwell Render v' + str(mxVersion) +  ' on ' + mrtPlatform + '\n'
   exifScriptText += '-xmp:Lens=Equirectangular 360 Degree Lens Shader\n'
   exifScriptText += '-xmp:Model=Maxwell Render Toolbox\n'
   exifScriptText += '-xmp:Make=Andrew Hazelden\n'
@@ -198,7 +198,7 @@ def mtr_writeExiftoolArgsFile(mxiImagePath, width, height, headingDegrees):
   exifScriptText += '-exif:ImageHeight=' + str(int(height)) + '\n'
   exifScriptText += '\n'
 
-  exifFilename = ( mtr_tempImagesDirectory() + 'exif-args.txt' )
+  exifFilename = ( mrt_tempImagesDirectory() + 'exif-args.txt' )
   exifFile = open(exifFilename, 'w')
   exifFile.write(exifScriptText)
   exifFile.close
@@ -211,43 +211,43 @@ def mtr_writeExiftoolArgsFile(mxiImagePath, width, height, headingDegrees):
 
 
 # Return the base folder of MaxwellRenderToolbox with an included trailing slash
-# Example: mtr_directory = mtr_getMaxwellRenderToolboxBaseFolder()
-def mtr_getMaxwellRenderToolboxBaseFolder():
-  mtr_directory = ''
-  mtrPlatform = mtr_getPlatform()
+# Example: mrt_directory = mrt_getMaxwellRenderToolboxBaseFolder()
+def mrt_getMaxwellRenderToolboxBaseFolder():
+  mrt_directory = ''
+  mrtPlatform = mrt_getPlatform()
 
-  if mtrPlatform == 'Windows':
+  if mrtPlatform == 'Windows':
     # Windows
-    mtr_directory = 'C:\\Program Files\\MaxwellRenderToolbox\\'
-  elif mtrPlatform == 'Mac':
+    mrt_directory = 'C:\\Program Files\\MaxwellRenderToolbox\\'
+  elif mrtPlatform == 'Mac':
     # Mac
-    mtr_directory = '/Applications/MaxwellRenderToolbox/'
+    mrt_directory = '/Applications/MaxwellRenderToolbox/'
   else:
     # Linux
-    mtr_directory = '/opt/MaxwellRenderToolbox/'
+    mrt_directory = '/opt/MaxwellRenderToolbox/'
 
-  # print('[MTR Base Directory on ' + mtrPlatform + '] ' + mtr_directory)
-  return mtr_directory
+  # print('[MTR Base Directory on ' + mrtPlatform + '] ' + mrt_directory)
+  return mrt_directory
 
 
 # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
-# Example: mtr_openTempImagesDirectory()
-def mtr_openTempImagesDirectory():
+# Example: mrt_openTempImagesDirectory()
+def mrt_openTempImagesDirectory():
   filenameNativePath = ''
-  mtrPlatform = mtr_getPlatform()
+  mrtPlatform = mrt_getPlatform()
   
   # Check OS platform for Windows/Mac/Linux Paths
-  if mtrPlatform == 'Windows':
+  if mrtPlatform == 'Windows':
     # Check if the program is running on Windows 
-    filenameNativePath = mtr_tempImagesDirectory()
+    filenameNativePath = mrt_tempImagesDirectory()
     os.system('explorer "' + filenameNativePath + '"')
-  elif mtrPlatform == 'Linux':
+  elif mrtPlatform == 'Linux':
     # Check if the program is running on Linux
-    filenameNativePath = mtr_tempImagesDirectory()
+    filenameNativePath = mrt_tempImagesDirectory()
     os.system('nautilus "' + filenameNativePath + '" &')
-  elif mtrPlatform == 'Mac':
+  elif mrtPlatform == 'Mac':
     # Check if the program is running on Mac
-    filenameNativePath = mtr_tempImagesDirectory()
+    filenameNativePath = mrt_tempImagesDirectory()
     os.system('open "' + filenameNativePath + '" &')
   else:
     # Create the empty variable as a fallback mode
@@ -259,9 +259,9 @@ def mtr_openTempImagesDirectory():
 
 
 # Open a folder window up using your desktop file browser
-# Example: mtr_openDirectory('/Applications/')
-def mtr_openDirectory(filenameNativePath):
-  mxPlatform = mtr_getPlatform()
+# Example: mrt_openDirectory('/Applications/')
+def mrt_openDirectory(filenameNativePath):
+  mxPlatform = mrt_getPlatform()
   
   # Convert a path to a file into a directory path
   dirName = ''
@@ -290,14 +290,14 @@ def mtr_openDirectory(filenameNativePath):
   
 
 # Find out the MaxwellRenderToolbox temporary images directory:
-# Example mtr_temp = mtr_tempImagesDirectory()
-def mtr_tempImagesDirectory():
+# Example mrt_temp = mrt_tempImagesDirectory()
+def mrt_tempImagesDirectory():
   # Construct the temp directory path
   tempDirPrefix = 'MaxwellRenderToolbox'
   tempDir = ''
   # C:\Users\ADMINI~1\AppData\Local\Temp\MaxwellRenderToolbox\
 
-  mxPlatform = mtr_getPlatform()
+  mxPlatform = mrt_getPlatform()
   tempDir = ''
   if mxPlatform == 'Windows':
     # Windows Temp Directory
@@ -317,28 +317,28 @@ def mtr_tempImagesDirectory():
   
   
 # Check the operating system
-# Example: mtrPlatform = mtr_getPlatform()
-def mtr_getPlatform():
+# Example: mrtPlatform = mrt_getPlatform()
+def mrt_getPlatform():
   import platform
 
   osPlatform = str(platform.system())
 
-  mtrPlatform = ''
+  mrtPlatform = ''
   if osPlatform == 'Windows':
-    mtrPlatform = 'Windows'
+    mrtPlatform = 'Windows'
   elif osPlatform == 'win32':
-    mtrPlatform = 'Windows'
+    mrtPlatform = 'Windows'
   elif osPlatform == 'Darwin':
-   mtrPlatform = "Mac"
+   mrtPlatform = "Mac"
   elif osPlatform== 'Linux':
-    mtrPlatform =  'Linux'
+    mrtPlatform =  'Linux'
   elif osPlatform == 'Linux2':
-    mtrPlatform = 'Linux'
+    mrtPlatform = 'Linux'
   else:
-    mtrPlatform = 'Linux'
+    mrtPlatform = 'Linux'
   
-  # print('Running on ' + mtrPlatform + '\n')
-  return mtrPlatform
+  # print('Running on ' + mrtPlatform + '\n')
+  return mrtPlatform
 
 
 # -------------------------------------------------------------------
@@ -347,10 +347,10 @@ def mtr_getPlatform():
 if __name__ == "__main__":
 
   # Release Version
-  mtr_version = '0.1'
+  mrt_version = '0.1'
   
   print('-----------------------------------------------')
-  print('Maxwell MXI 2 Photosphere v' + mtr_version + ' on ' + mtr_getPlatform())
+  print('Maxwell MXI 2 Photosphere v' + mrt_version + ' on ' + mrt_getPlatform())
   print('By Andrew Hazelden <andrew@andrewhazelden.com>')
   print('http://www.andrewhazelden.com/blog')
   print('-----------------------------------------------\n')
@@ -387,10 +387,10 @@ if __name__ == "__main__":
 
     if ok == 1:
       # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
-      #mtr_openTempImagesDirectory()
+      #mrt_openTempImagesDirectory()
           
       # Open a folder window up using your desktop file browser
-      mtr_openDirectory(mxiImagePath)
+      mrt_openDirectory(mxiImagePath)
   elif os.path.isdir(mxiImagePath):
     print('[Entering MXI Directory Processing Mode]')
     
@@ -409,10 +409,10 @@ if __name__ == "__main__":
 
       if ok == 1 and mxiNumber == 1:
         # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
-        #mtr_openTempImagesDirectory()
+        #mrt_openTempImagesDirectory()
         
         # Open a folder window up using your desktop file browser
-        mtr_openDirectory(mxiFileDirPath)
+        mrt_openDirectory(mxiFileDirPath)
   else:
     print('[MXI File Not Found] ' + mxiImagePath)
     

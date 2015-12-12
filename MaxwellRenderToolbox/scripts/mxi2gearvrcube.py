@@ -1,6 +1,6 @@
 # MXI to GearVR Cubic Panorama Converter for Maxwell Studio
 # ----------------------------------------------------------
-# 2015-12-11 08.51 AM v0.1
+# 2015-12-12 07.12 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -56,7 +56,7 @@ import sys
 # Example: mrt_latlong2gearvr('/CubeX_L.mxs', '/CubeX_R.mxs', '_GearVR_Stereo', 'png')
 def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefix, outputPanoramaFileExt):
   # Check the current operating system
-  mxPlatform = mtr_getPlatform()
+  mxPlatform = mrt_getPlatform()
   
   # Find out the current scene file
   leftDirName = os.path.dirname(mxsLeftImagePath)
@@ -72,7 +72,7 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
   # Warp and stitch the cubic images
   
   # Find out the MaxwellRenderToolbox temporary images directory:
-  mtr_temp = mtr_tempImagesDirectory()
+  mrt_temp = mrt_tempImagesDirectory()
 
   # Merged GearVR Stereo cubic panorama imagename
   output_gearvr = leftScenePathNoExt + gearVRImagenamePrefix + '.' + outputPanoramaFileExt
@@ -88,13 +88,13 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
   # Check OS platform for Windows/Mac/Linux Paths
   if mxPlatform == 'Windows':
     # Check if the program is running on Windows 
-    filenameNativePath = mtr_getMaxwellRenderToolboxBaseFolder() + 'tools' + os.sep
+    filenameNativePath = mrt_getMaxwellRenderToolboxBaseFolder() + 'tools' + os.sep
     nona = filenameNativePath + 'panotoolsNG' + os.sep + 'bin' + os.sep + 'nona.exe'
     enblend = filenameNativePath + 'panotoolsNG' + os.sep + 'bin' + os.sep + 'enblend.exe'
     imagemagick = filenameNativePath + 'imagemagick' + os.sep + 'bin' + os.sep + 'imconvert.exe'
     tee = filenameNativePath +'wintee' + os.sep + 'bin' + os.sep + 'wtee.exe'
   elif mxPlatform == 'Mac':
-    filenameNativePath = mtr_getMaxwellRenderToolboxBaseFolder() + 'mac_tools' + os.sep 
+    filenameNativePath = mrt_getMaxwellRenderToolboxBaseFolder() + 'mac_tools' + os.sep 
     nona = filenameNativePath + 'panotoolsNG' + os.sep + 'bin' + os.sep + 'nona'
     enblend = filenameNativePath + 'panotoolsNG' + os.sep + 'bin' + os.sep + 'enblend'
     # Todo: Find the different Imagemagick install directories and check if each of them exists
@@ -165,7 +165,7 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
       return 0
     
     # The LatLong format panorama converted into a tiff image format
-    latLongTiffFrame = mtr_temp + 'mtr_latlong_' + view + '.' + nonaInputExt
+    latLongTiffFrame = mrt_temp + 'mrt_latlong_' + view + '.' + nonaInputExt
   
     # Convert the maxwell image to tiff for the panoramic warping stage
     systemCommand  = '"' + imagemagick + '" '
@@ -174,7 +174,7 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
     systemCommand += '"' + latLongTiffFrame + '" '
   
     # Redirect the output from the terminal to a log file
-    outputLog = mtr_tempImagesDirectory() + 'imagemagickFrameConversionOutputLog.txt'
+    outputLog = mrt_tempImagesDirectory() + 'imagemagickFrameConversionOutputLog.txt'
   
     # Customize the output log command for each platform
     systemCommand += ' ' + '2>&1 | "' + tee + '" -a ' + '"' + outputLog + '"'
@@ -208,7 +208,7 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
     # ----------------------------------------------
   
     # Create the LatLong to Cubic Face Panotools PTO project files:
-    mtr_generatePanotoolPtoFiles(width, height, cubicResolution, latLongTiffFrame)
+    mrt_generatePanotoolPtoFiles(width, height, cubicResolution, latLongTiffFrame)
   
     # ----------------------------------------------
     # ----------------------------------------------
@@ -227,7 +227,7 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
     # Disable the GPU warping flag on Mac and Linux as the GPU might be autodetected by nona
 
     # Remove the file extension for the nona -o image output stage
-    nona_output_image_no_ext = mtr_tempImagesDirectory() +  'mtr_nona_warp_' + view + '.'
+    nona_output_image_no_ext = mrt_tempImagesDirectory() +  'mrt_nona_warp_' + view + '.'
 
     systemCommand += ' -o "' + nona_output_image_no_ext + '"'
 
@@ -241,10 +241,10 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
     # command += " " + nona_options + " -r ldr -z LZW -m TIFF_m "
 
     # PT Script
-    systemCommand += ' "' + mtr_tempImagesDirectory() + ptscriptFile + '"' 
+    systemCommand += ' "' + mrt_tempImagesDirectory() + ptscriptFile + '"' 
 
     # Redirect the output from the terminal to a log file
-    outputLog = mtr_tempImagesDirectory() + 'nonaOutputLog.txt'
+    outputLog = mrt_tempImagesDirectory() + 'nonaOutputLog.txt'
 
     # Customize the output log command for each platform
     systemCommand += ' ' + '2>&1 | "' + tee + '" -a ' + '"' + outputLog + '"'
@@ -272,20 +272,20 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
 
 
   # Left Cube Views
-  output_back_L = mtr_temp + 'mtr_nona_warp_L.0000' + '.' + nonaOutputExt
-  output_bottom_L = mtr_temp + 'mtr_nona_warp_L.0001' + '.' + nonaOutputExt
-  output_front_L = mtr_temp + 'mtr_nona_warp_L.0002' + '.' + nonaOutputExt
-  output_left_L = mtr_temp + 'mtr_nona_warp_L.0003' + '.' + nonaOutputExt
-  output_right_L = mtr_temp + 'mtr_nona_warp_L.0004' + '.' + nonaOutputExt
-  output_top_L = mtr_temp + 'mtr_nona_warp_L.0005' + '.' + nonaOutputExt
+  output_back_L = mrt_temp + 'mrt_nona_warp_L.0000' + '.' + nonaOutputExt
+  output_bottom_L = mrt_temp + 'mrt_nona_warp_L.0001' + '.' + nonaOutputExt
+  output_front_L = mrt_temp + 'mrt_nona_warp_L.0002' + '.' + nonaOutputExt
+  output_left_L = mrt_temp + 'mrt_nona_warp_L.0003' + '.' + nonaOutputExt
+  output_right_L = mrt_temp + 'mrt_nona_warp_L.0004' + '.' + nonaOutputExt
+  output_top_L = mrt_temp + 'mrt_nona_warp_L.0005' + '.' + nonaOutputExt
 
   # Right Cube Views
-  output_back_R = mtr_temp + 'mtr_nona_warp_R.0000' + '.' + nonaOutputExt
-  output_bottom_R = mtr_temp +'mtr_nona_warp_R.0001' + '.' + nonaOutputExt
-  output_front_R = mtr_temp + 'mtr_nona_warp_R.0002' + '.' + nonaOutputExt
-  output_left_R = mtr_temp + 'mtr_nona_warp_R.0003' + '.' + nonaOutputExt
-  output_right_R = mtr_temp + 'mtr_nona_warp_R.0004' + '.' + nonaOutputExt
-  output_top_R = mtr_temp + 'mtr_nona_warp_R.0005' + '.' + nonaOutputExt
+  output_back_R = mrt_temp + 'mrt_nona_warp_R.0000' + '.' + nonaOutputExt
+  output_bottom_R = mrt_temp +'mrt_nona_warp_R.0001' + '.' + nonaOutputExt
+  output_front_R = mrt_temp + 'mrt_nona_warp_R.0002' + '.' + nonaOutputExt
+  output_left_R = mrt_temp + 'mrt_nona_warp_R.0003' + '.' + nonaOutputExt
+  output_right_R = mrt_temp + 'mrt_nona_warp_R.0004' + '.' + nonaOutputExt
+  output_top_R = mrt_temp + 'mrt_nona_warp_R.0005' + '.' + nonaOutputExt
   
   # Check if the OS is Windows, Mac, or Linux. 
   # We need to escape the terminal parenthesis characters on Linux and Mac with \( and \)
@@ -328,7 +328,7 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
   systemCommand += '"' + output_gearvr + '" '
 
   # Redirect the output from the terminal to a log file
-  outputLog = mtr_tempImagesDirectory() + 'imagemagickOutputLog.txt'
+  outputLog = mrt_tempImagesDirectory() + 'imagemagickOutputLog.txt'
 
   # Customize the output log command for each platform
   systemCommand += ' ' + '2>&1 | "' + tee + '" -a ' + '"' + outputLog + '"'
@@ -357,14 +357,14 @@ def mrt_latlong2gearvr(mxsLeftImagePath, mxsRightImagePath, gearVRImagenamePrefi
   return 1
 
 # Find out the MaxwellRenderToolbox temporary images directory:
-# Example mtr_temp = mtr_tempImagesDirectory()
-def mtr_tempImagesDirectory():
+# Example mrt_temp = mrt_tempImagesDirectory()
+def mrt_tempImagesDirectory():
   # Construct the temp directory path
   tempDirPrefix = 'MaxwellRenderToolbox'
   tempDir = ''
   # C:\Users\ADMINI~1\AppData\Local\Temp\MaxwellRenderToolbox\
 
-  mxPlatform = mtr_getPlatform()
+  mxPlatform = mrt_getPlatform()
   tempDir = ''
   if mxPlatform == 'Windows':
     # Windows Temp Directory
@@ -384,8 +384,8 @@ def mtr_tempImagesDirectory():
 
 
 # Create the LatLong to Cubic Face Panotools PTO project files:
-# Example: mtr_generatePanotoolPtoFiles('2048', '1024', '512', '/latlong_image.png')
-def mtr_generatePanotoolPtoFiles(imageWidth, imageHeight, cubicResolution, input_latlong):
+# Example: mrt_generatePanotoolPtoFiles('2048', '1024', '512', '/latlong_image.png')
+def mrt_generatePanotoolPtoFiles(imageWidth, imageHeight, cubicResolution, input_latlong):
   
   # This is the FOV setting for each of the extracted cubemap faces
   outputHorizFov = 90
@@ -476,14 +476,14 @@ def mtr_generatePanotoolPtoFiles(imageWidth, imageHeight, cubicResolution, input
   # Display the output text for the PT Stitcher script
   print('[PT Stitcher Script] ' + ptscriptText)
   # Write the active camera view's .pto file to the temp folder
-  mtr_writePTScriptFile(ptscriptFile, ptscriptText)
+  mrt_writePTScriptFile(ptscriptFile, ptscriptText)
   
 
 # Write out a pt stitcher script file
-# Example: mtr_writePTScriptFile('/script.pto', 'm i4')
-def mtr_writePTScriptFile(filename, ptscriptText):
+# Example: mrt_writePTScriptFile('/script.pto', 'm i4')
+def mrt_writePTScriptFile(filename, ptscriptText):
   
-  ptscriptFilename = mtr_tempImagesDirectory() + filename
+  ptscriptFilename = mrt_tempImagesDirectory() + filename
   ptFile = open(ptscriptFilename, 'w')
   ptFile.write(ptscriptText)
   ptFile.close
@@ -493,29 +493,29 @@ def mtr_writePTScriptFile(filename, ptscriptText):
   
       
 # Return the base folder of MaxwellRenderToolbox with an included trailing slash
-# Example: mtr_directory = mtr_getMaxwellRenderToolboxBaseFolder()
-def mtr_getMaxwellRenderToolboxBaseFolder():
-  mtr_directory = ''
-  mxPlatform = mtr_getPlatform()
+# Example: mrt_directory = mrt_getMaxwellRenderToolboxBaseFolder()
+def mrt_getMaxwellRenderToolboxBaseFolder():
+  mrt_directory = ''
+  mxPlatform = mrt_getPlatform()
 
   if mxPlatform == 'Windows':
     # Windows
-    mtr_directory = 'C:\\Program Files\\MaxwellRenderToolbox\\'
+    mrt_directory = 'C:\\Program Files\\MaxwellRenderToolbox\\'
   elif mxPlatform == 'Mac':
     # Mac
-    mtr_directory = '/Applications/MaxwellRenderToolbox/'
+    mrt_directory = '/Applications/MaxwellRenderToolbox/'
   else:
     # Linux
-    mtr_directory = '/opt/MaxwellRenderToolbox/'
+    mrt_directory = '/opt/MaxwellRenderToolbox/'
 
-  # print('[MTR Base Directory on ' + mxPlatform + '] ' + mtr_directory)
-  return mtr_directory
+  # print('[MTR Base Directory on ' + mxPlatform + '] ' + mrt_directory)
+  return mrt_directory
 
 
 # Open a folder window up using your desktop file browser
-# Example: mtr_openDirectory('/Applications/')
-def mtr_openDirectory(filenameNativePath):
-  mxPlatform = mtr_getPlatform()
+# Example: mrt_openDirectory('/Applications/')
+def mrt_openDirectory(filenameNativePath):
+  mxPlatform = mrt_getPlatform()
   
   # Convert a path to a file into a directory path
   dirName = ''
@@ -544,23 +544,23 @@ def mtr_openDirectory(filenameNativePath):
   
   
 # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
-# Example: mtr_openTempImagesDirectory()
-def mtr_openTempImagesDirectory():
+# Example: mrt_openTempImagesDirectory()
+def mrt_openTempImagesDirectory():
   filenameNativePath = ''
-  mxPlatform = mtr_getPlatform()
+  mxPlatform = mrt_getPlatform()
   
   #Check OS platform for Windows/Mac/Linux Paths
   if mxPlatform == 'Windows':
     # Check if the program is running on Windows 
-    filenameNativePath = mtr_tempImagesDirectory()
+    filenameNativePath = mrt_tempImagesDirectory()
     os.system('explorer "' + filenameNativePath + '"')
   elif mxPlatform == 'Linux':
     # Check if the program is running on Linux
-    filenameNativePath = mtr_tempImagesDirectory()
+    filenameNativePath = mrt_tempImagesDirectory()
     os.system('nautilus "' + filenameNativePath + '" &')
   elif mxPlatform == 'Mac':
     # Check if the program is running on Mac
-    filenameNativePath = mtr_tempImagesDirectory()
+    filenameNativePath = mrt_tempImagesDirectory()
     os.system('open "' + filenameNativePath + '" &')
   else:
     # Create the empty variable as a fallback mode
@@ -571,8 +571,8 @@ def mtr_openTempImagesDirectory():
   
   
 # Check the operating system
-# Example: mxPlatform = mtr_getPlatform()
-def mtr_getPlatform():
+# Example: mxPlatform = mrt_getPlatform()
+def mrt_getPlatform():
   import platform
 
   osPlatform = str(platform.system())
@@ -599,10 +599,10 @@ def mtr_getPlatform():
 if __name__ == "__main__":
 
   # Release Version
-  mtr_version = '0.1'
+  mrt_version = '0.1'
   
   print('-----------------------------------------------')
-  print('MXI to GearVR Cubic Panorama Converter v' + mtr_version)
+  print('MXI to GearVR Cubic Panorama Converter v' + mrt_version)
   print('By Andrew Hazelden <andrew@andrewhazelden.com>')
   print('http://www.andrewhazelden.com/blog')
   print('-----------------------------------------------\n')
@@ -638,10 +638,10 @@ if __name__ == "__main__":
       
       if ok == 1:
         # Open the MaxwellRenderToolbox temporary images folder window up using your desktop file browser
-        #mtr_openTempImagesDirectory()
+        #mrt_openTempImagesDirectory()
         
         # Open a folder window up using your desktop file browser
-        mtr_openDirectory(mxsLeftImagePath)
+        mrt_openDirectory(mxsLeftImagePath)
     else:
       print('[MXS Right Image File Not Found] ' + mxsLeftImagePath)
   else:
