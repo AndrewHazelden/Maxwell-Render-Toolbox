@@ -1,6 +1,6 @@
 # Maxwell Render Toolbox - A Python Based Pipeline Automation Suite #
 ----
-**Version 0.1.1** - Released 2015-12-11  
+**Version 0.1.2** - Released 2015-12-12  
 by Andrew Hazelden  
 
 Twitter: [@AndrewHazelden](https://twitter.com/andrewhazelden)  

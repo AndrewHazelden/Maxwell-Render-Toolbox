@@ -1,3 +1,10 @@
+# PanoView for Maxwell Render #
+2015-12-12 8.55 AM  
+----
+By Andrew Hazelden  
+Email: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)  
+Blog: [http://www.andrewhazelden.com](http://www.andrewhazelden.com)  
+
 ## Overview ##
 
 ![PanoView for Maxwell Render Screenshot](images/panoview-for-maxwell-screenshot.png)

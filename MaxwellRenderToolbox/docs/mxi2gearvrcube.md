@@ -1,5 +1,5 @@
-# MXI to GearVR Cubic Panorama Converter v0.1#
-2015-12-11 06.15 AM
+# MXI to GearVR Cubic Panorama Converter v0.1 #
+2015-12-12 8.55 AM  
 ----
 By Andrew Hazelden  
 Email: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)  

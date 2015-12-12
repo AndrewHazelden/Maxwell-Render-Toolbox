@@ -1,5 +1,5 @@
-# MXI to Google Photosphere v0.1#
-2015-12-11 1.08 AM
+# MXI to Google Photosphere v0.1 #
+2015-12-12 8.55 AM
 ----
 By Andrew Hazelden  
 Email: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)  
