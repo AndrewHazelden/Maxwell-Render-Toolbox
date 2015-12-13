@@ -1,5 +1,5 @@
-# MXI to Anaglyph v0.1 #
-2015-12-13 08.39 AM
+# MXI to Anaglyph Stereo Converter v0.1 #
+2015-12-13 08.51 AM
 ----
 By Andrew Hazelden  
 Email: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)  
@@ -22,4 +22,4 @@ Step 3. Edit the "mxiLeftImagePath" and the "mxiRightImagePath" variable in the 
 
 Step 4. Select the **Script > Run** menu item in PyMaxwell.
 
-Step 5. An anaglyph stereo image has been generated at this point with the name of `<Scene>_anaglyph.png` and is saved in the same folder as the original .mxi image. The folder where the new anaglyph image has been saved to will be opened up automatically in your desktop file browser.
+Step 5. An anaglyph stereo image has been generated at this point with the name of `<Scene_L>_anaglyph.png` and is saved in the same folder as the original .mxi image. The folder where the new anaglyph image has been saved to will be opened up automatically in your desktop file browser.

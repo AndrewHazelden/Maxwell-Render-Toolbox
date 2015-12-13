@@ -39,7 +39,7 @@
 
 # Step 4. Select the Script > Run menu item in PyMaxwell.
 
-# Step 5. A Gear VR style stereo cubemap has been generated at this point with the name of `<Scene>_GearVR_Stereo.png` and is saved in the same folder as the original .mxi image. The folder where the new Gear VR image has been saved to will be opened up automatically in your desktop file browser.
+# Step 5. A Gear VR style stereo cubemap has been generated at this point with the name of `<Scene_L>_GearVR_Stereo.png` and is saved in the same folder as the original .mxi image. The folder where the new Gear VR image has been saved to will be opened up automatically in your desktop file browser.
 
 # -----------------------------------------
 
