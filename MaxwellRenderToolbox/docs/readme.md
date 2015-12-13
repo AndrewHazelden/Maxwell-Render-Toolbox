@@ -1,6 +1,6 @@
 # Maxwell Render Toolbox - A Python Based Pipeline Automation Suite #
 ----
-**Version 0.1.2** - Released 2015-12-12  
+**Version 0.1.3** - Released 2015-12-13  
 by Andrew Hazelden  
 
 Twitter: [@AndrewHazelden](https://twitter.com/andrewhazelden)  
@@ -18,6 +18,7 @@ Google+: [plus.google.com/+AndrewHazelden/](https://plus.google.com/+AndrewHazel
 - **Maxwell Render Toolbox Tools:**
   - [Automagic Latlong](automagic_latlong_stereo.html)
   - [PanoView for Maxwell Render](panoview_for_maxwell_render.html)
+  - [MXI to Anaglyph](mxi2anaglyph.html)
   - [MXI to GearVR Cubic Panorama Converter](mxi2gearvrcube.html)
   - [MXI to Google Photosphere](mxi2photosphere.html)
 - [Version History](version_history.html#version-history)

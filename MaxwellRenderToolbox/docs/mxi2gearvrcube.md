@@ -1,9 +1,11 @@
 # MXI to GearVR Cubic Panorama Converter v0.1 #
-2015-12-12 8.55 AM  
+2015-12-13 08.39 AM
 ----
 By Andrew Hazelden  
 Email: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)  
 Blog: [http://www.andrewhazelden.com](http://www.andrewhazelden.com)  
+
+![GearVR Cubic Panorama](images/cubex_gearvr_stereo.jpg)
 
 ## Description ##
 The `mxi2gearvrcube.py` script will convert a set of Maxwell .mxi based LatLong Stereo panoramas into a Gear VR stereo cubemap style horizontal strip panorama. The script uses PyMaxwell, Panotools, and Imagemagick to do the panoramic conversions.
