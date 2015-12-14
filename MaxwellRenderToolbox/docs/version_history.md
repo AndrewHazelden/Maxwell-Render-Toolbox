@@ -2,9 +2,13 @@
 # Version History #
 ----
 
+## Version 0.1.4 - 2015-12-14 ##
+
+- Added the **MXS to Render** script `mxs2render.py` that makes it easy to render out a single frame .mxs file or a whole directory of .mxs files. You can use the script to easily set rendering overrides that will be used when you batch render each of the files.
+
 ## Version 0.1.3 - 2015-12-13 ##
 
-- Added the **MXI to Anaglyph Stereo Converter** script `mxi2anaglyph.py` script that outputs a red/cyan stereo image.
+- Added the **MXI to Anaglyph Stereo Converter** script `mxi2anaglyph.py` that outputs a red/cyan stereo image.
 
 ## Version 0.1.2 - 2015-12-12 ##
 
@@ -22,5 +26,5 @@
 - Inital GitHub commit
 - Added the base open source tools used for to the repository
 - Added the **Automagic VR** script for quickly setting up and rendering LatLong Stereo imagery in Maxwell Studio/Maxwell Render
-- Added the **PanoView** for Maxwell Render Script and docs
+- Added the **PanoView** for Maxwell Render script and docs
 - Added the base set of icons for the project

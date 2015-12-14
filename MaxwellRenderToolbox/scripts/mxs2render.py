@@ -1,26 +1,23 @@
 # MXS to Render for PyMaxwell
 # ---------------------------------
-# 2015-12-14 09.16 AM v0.1
+# 2015-12-14 09.28 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
 
 # Description
 # -----------
-# This script will scan the current directory and allow you to render all of the MXS files to a custom target SL level. The "Try to Resume" option will be enabled to allow you to progressively refine scenes with existing .mxs images.
+# The `mxs2render.py` script will scan the current directory and allow you to render all of the MXS files to a custom target SL level. You can customize many of the settings that will be used for each of the renderings. The "Try to Resume" option will be enabled to allow you to progressively refine scenes with existing .mxi images.
 
 
 # How do I use the script?
 # ------------------------
 
-# Step 1.
-# Export a set of .mxs files to a directory.
+# Step 1. Export a set of .mxs files to a directory.
 
-# Step 2.
-# Launch PyMaxwell and open up the `mxs2render.py` python script.
+# Step 2. Launch PyMaxwell and open up the `mxs2render.py` python script.
 
-# Step 3.
-# Edit the "mxsFilePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXS scene file. You can also specify a directory of MXS files and they will be processed one at a time.
+# Step 3. Edit the "mxsFilePath" variable in the main function near the bottom of this script and specify your Maxwell Studio based MXS scene file. You can also specify a directory of MXS files and they will be processed one at a time. If you want to override any of the default render settings you can do it in the main function of the code as well using the different variables that are commented out.
 
 # Step 4. Select the Script > Run menu item in PyMaxwell.
 
@@ -354,8 +351,9 @@ if __name__ == "__main__":
   # samplingLevel = '8'  # Rough Draft Quality
   # samplingLevel = '10' # Draft Quality
   # samplingLevel = '16' # Medium Quality
-  # samplingLevel = '16' # Fine Quality
-  
+  # samplingLevel = '18' # Fine Quality
+  # samplingLevel = '24' # Extra Fine Quality
+
   
   # Time Limit
   # -----------
