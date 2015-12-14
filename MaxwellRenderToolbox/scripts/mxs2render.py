@@ -1,6 +1,6 @@
 # MXS to Render for PyMaxwell
 # ---------------------------------
-# 2015-12-14 09.28 AM v0.1
+# 2015-12-14 09.37 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -452,7 +452,8 @@ if __name__ == "__main__":
   # mxsFilePath = '/Applications/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
   # mxsFilePath = 'C:/Program Files/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
   # mxsFilePath = '/opt/MaxwellRenderToolbox/examples/stereo/CubeX.mxs'
-
+  # mxsFilePath = 'C:\Program Files\Next Limit\Maxwell 3\library\Scenes\Guggenheim_museum_Bilbao\Guggenheim_museum_Bilbao.mxs'
+  
   # ---------------------------------------------------
   # Or process a whole directory of Maxwell MXS files
   # ---------------------------------------------------
