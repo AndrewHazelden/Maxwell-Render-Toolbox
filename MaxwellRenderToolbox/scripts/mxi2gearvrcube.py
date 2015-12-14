@@ -368,7 +368,7 @@ def mrt_tempImagesDirectory():
   tempDir = ''
   if mxPlatform == 'Windows':
     # Windows Temp Directory
-    tempDir = os.getenv('TEMP') + tempDirPrefix + os.sep
+    tempDir = os.getenv('TEMP') + os.sep + tempDirPrefix + os.sep
   else:
     # Mac and Linux Temp directory
     tempDir = os.getenv('TMPDIR') + tempDirPrefix + os.sep

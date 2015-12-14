@@ -1,6 +1,6 @@
 # MXS to Render for PyMaxwell
 # ---------------------------------
-# 2015-12-14 08.54 AM v0.1
+# 2015-12-14 09.16 AM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -81,7 +81,7 @@ def mrt_processMXS(mxsNumber, mxsFilePath, samplingLevel, camera, dependencies, 
   maxwellTool = ''
   tee = ''
   if mrtPlatform == 'Windows':
-    maxwellTool = 'C:\Program Files\NextLimit\Maxwell 3\Maxwell.exe'
+    maxwellTool = 'C:\Program Files\Next Limit\Maxwell 3\Maxwell.exe'
     filenameNativePath = mrt_getMaxwellRenderToolboxBaseFolder() + 'tools' + os.sep
     tee = filenameNativePath +'wintee' + os.sep + 'bin' + os.sep + 'wtee.exe'
   elif mrtPlatform == 'Mac':
@@ -95,7 +95,7 @@ def mrt_processMXS(mxsNumber, mxsFilePath, samplingLevel, camera, dependencies, 
     tee = 'tee'
   
   command  = '"' + maxwellTool + '"' 
-  command += ' -mxs:' + mxsFilePath
+  command += ' -mxs:"' + mxsFilePath + '"' 
   
   # Maxwell CPU priority mode - either 'low' or 'normal'
   if priority == 'low' or priority == 'normal':
@@ -121,12 +121,12 @@ def mrt_processMXS(mxsNumber, mxsFilePath, samplingLevel, camera, dependencies, 
     
   # Custom camera view override
   if not camera == '':
-    command += ' -camera:' + camera
+    command += ' -camera:"' + camera + '"'
     customOverrideString += ' [Camera] ' + camera
     
   # Add any extra scene dependencies
   if not dependencies == '':
-    command += ' -dependencies:' + dependencies
+    command += ' -dependencies:"' + dependencies + '"'
     customOverrideString += ' [Dependencies] ' + dependencies
   
   # Render threads
@@ -141,7 +141,7 @@ def mrt_processMXS(mxsNumber, mxsFilePath, samplingLevel, camera, dependencies, 
     
   # Maxwell Render Script
   if not script == '':
-    command += ' -script:' + script
+    command += ' -script:"' + script + '"' 
     customOverrideString += ' [Script] ' + script
   
   # Render Passes
@@ -288,7 +288,7 @@ def mrt_tempImagesDirectory():
   tempDir = ''
   if mxPlatform == 'Windows':
     # Windows Temp Directory
-    tempDir = os.getenv('TEMP') + tempDirPrefix + os.sep
+    tempDir = os.getenv('TEMP') + os.sep + tempDirPrefix + os.sep
   else:
     # Mac and Linux Temp directory
     tempDir = os.getenv('TMPDIR') + tempDirPrefix + os.sep
@@ -355,7 +355,6 @@ if __name__ == "__main__":
   # samplingLevel = '10' # Draft Quality
   # samplingLevel = '16' # Medium Quality
   # samplingLevel = '16' # Fine Quality
-  # samplingLevel = '24' # Extra Fine Quality
   
   
   # Time Limit
