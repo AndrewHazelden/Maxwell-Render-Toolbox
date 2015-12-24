@@ -1,9 +1,27 @@
 # MXS Folder Merge for PyMaxwell
 # ---------------------------------
-# 2015-12-24 16.04 PM
+# 2015-12-24 17.34 PM
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
+
+# Description
+# -----------
+# This script will take a folder full of .mxs scene files and merge all of the cameras and mesh elements into a single mxs document.
+
+
+# How do I use the script?
+# ------------------------
+
+# Step 1. Launch PyMaxwell and open up the `mxs_folder_merge.py` python script.
+
+# Step 3. Edit the "mxsFilePath" variable in the main function near the bottom of this script and specify a directory that holds your Maxwell Studio based MXS scene files.
+
+# The "mxsOutputFilenamePrefix" variable lets you specify the prefix part of the newly merged mxs document. When the script is run, a new folder called "Merged" will be created in the "mxsFilePath" folder that contains the newly generated mxs scene output. The final file name will be formated like this "<prefix>_merged.mxs".
+
+# Step 4. Select the Script > Run menu item in PyMaxwell.
+
+# Step 5. A new desktop folder window will open when the script completes that shows the newly merged .mxs scene file.
 
 
 from pymaxwell import *
