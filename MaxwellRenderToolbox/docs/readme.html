@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>version_history</title>
+<title>readme</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -291,40 +291,51 @@ img {
 </style>
 </head>
 <body>
-<p><a name="version-history"></a></p>
-<h1>Version History</h1>
+<h1>Maxwell Render Toolbox - A Python Based Pipeline Automation Suite</h1>
 <hr />
-<h2>Version 0.1.5 - 2016-01-31</h2>
+<p><strong>Version 0.1.5</strong> - Released 2016-01-31<br />
+by Andrew Hazelden  </p>
+<p>Twitter: <a href="https://twitter.com/andrewhazelden">@AndrewHazelden</a><br />
+Email: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x61;n&#x64;&#x72;&#x65;&#x77;&#x40;&#97;&#x6e;d&#114;&#x65;&#x77;&#104;&#x61;&#122;&#101;&#x6c;&#x64;&#x65;&#110;&#x2e;&#99;&#x6f;&#109;">&#x61;&#110;&#x64;&#114;&#101;w&#64;a&#110;&#100;&#114;&#101;&#119;&#x68;&#x61;zel&#100;&#x65;&#x6e;&#46;&#99;&#111;&#109;</a><br />
+Web: <a href="http://www.andrewhazelden.com">www.andrewhazelden.com</a><br />
+Google+: <a href="https://plus.google.com/+AndrewHazelden/">plus.google.com/+AndrewHazelden/</a>  </p>
+<h2>Table of Contents</h2>
 <ul>
-<li>Added the MXS Folder Merge script <code>mxs_folder_merge.py</code>.  This script is still under development and will be eventually updated to use an fancier MXS scene reference type of approach for merging the assets into one file instead of the direct merging approach that is currently used.</li>
-</ul>
-<h2>Version 0.1.4 - 2015-12-14</h2>
+<li><a href="#support">Support</a></li>
+<li><a href="#overview">Overview</a></li>
+<li>
+<a href="install.html">Install</a>
 <ul>
-<li>Added the <strong>MXS to Render</strong> script <code>mxs2render.py</code> that makes it easy to render out a single frame .mxs file or a whole directory of .mxs files. You can use the script to easily set rendering overrides that will be used when you batch render each of the files.</li>
+<li><a href="install.html#windows-install">Windows Manual Install</a></li>
+<li><a href="install.html#mac-install">Mac OS X Manual Install</a></li>
+<li><a href="install.html#linux-install">Linux Manual Install</a></li>
 </ul>
-<h2>Version 0.1.3 - 2015-12-13</h2>
+</li>
+<li>
+<strong>Maxwell Render Toolbox Tools:</strong>
 <ul>
-<li>Added the <strong>MXI to Anaglyph Stereo Converter</strong> script <code>mxi2anaglyph.py</code> that outputs a red/cyan stereo image.</li>
+<li><a href="automagic_latlong_stereo.html">Automagic Latlong</a></li>
+<li><a href="panoview_for_maxwell_render.html">PanoView for Maxwell Render</a></li>
+<li><a href="mxs2render.html">MXS to Render</a></li>
+<li><a href="mxi2anaglyph.html">MXI to Anaglyph</a></li>
+<li><a href="mxi2gearvrcube.html">MXI to GearVR Cubic Panorama Converter</a></li>
+<li>MXS Folder Merge</li>
+<li><a href="mxi2photosphere.html">MXI to Google Photosphere</a></li>
 </ul>
-<h2>Version 0.1.2 - 2015-12-12</h2>
-<ul>
-<li>Updated the .mxs example files included and added a pair of .mxi images to make it easier to test the &quot;mxi2gearvrcube.py&quot; script</li>
-<li>Updated the scripts to improve their formatting</li>
+</li>
+<li><a href="version_history.html#version-history">Version History</a></li>
+<li><a href="opensource_tools.html">Supporting Open Source Libraries</a></li>
 </ul>
-<h2>Version 0.1.1 - 2015-12-11</h2>
-<ul>
-<li>Added the <strong>MXI to GearVR Cubic Panorama Converter</strong> script &quot;mxi2gearvrcube.py&quot;</li>
-<li>Added the <strong>MXI to Google Photosphere</strong> panoramic metadata embedding script &quot;mxi2photosphere.py&quot;</li>
-<li>Updated the docs</li>
-</ul>
-<h2>Version 0.1 - 2015-12-08</h2>
-<ul>
-<li>Inital GitHub commit</li>
-<li>Added the base open source tools used for to the repository</li>
-<li>Added the <strong>Automagic VR</strong> script for quickly setting up and rendering LatLong Stereo imagery in Maxwell Studio/Maxwell Render</li>
-<li>Added the <strong>PanoView</strong> for Maxwell Render script and docs</li>
-<li>Added the base set of icons for the project</li>
-</ul>
+<p><a name="support"></a></p>
+<h2>Support</h2>
+<p>If you have a support question about the Maxwell Render Toolbox you can contact the author via email:
+<a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x61;n&#x64;&#x72;&#x65;&#x77;&#x40;&#97;&#x6e;d&#114;&#x65;&#x77;&#104;&#x61;&#122;&#101;&#x6c;&#x64;&#x65;&#110;&#x2e;&#99;&#x6f;&#109;">&#x61;&#110;&#x64;&#114;&#101;w&#64;a&#110;&#100;&#114;&#101;&#119;&#x68;&#x61;zel&#100;&#x65;&#x6e;&#46;&#99;&#111;&#109;</a></p>
+<p><a name="overview"></a></p>
+<h2>Overview</h2>
+<p>The Maxwell Render Toolbox is a suite of PyMaxwell based python scripts and tools that simplify the most common pipeline centric tasks that artists need help with in Maxwell Render and Maxwell Studio.</p>
+<p>Maxwell Render Toolbox supports Maxwell Render 3.2 on Windows 64-Bit, Mac OS X, and Linux 64-Bit systems.</p>
+<h2>Open Source License</h2>
+<p><em>The Maxwell Render Toolbox is distributed under a GPL v3 license.</em></p>
 
 </body>
 </html>

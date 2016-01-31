@@ -2,6 +2,10 @@
 # Version History #
 ----
 
+## Version 0.1.5 - 2016-01-31 ##
+
+- Added the MXS Folder Merge script `mxs_folder_merge.py`.  This script is still under development and will be eventually updated to use an fancier MXS scene reference type of approach for merging the assets into one file instead of the direct merging approach that is currently used.
+
 ## Version 0.1.4 - 2015-12-14 ##
 
 - Added the **MXS to Render** script `mxs2render.py` that makes it easy to render out a single frame .mxs file or a whole directory of .mxs files. You can use the script to easily set rendering overrides that will be used when you batch render each of the files.

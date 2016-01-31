@@ -1,6 +1,6 @@
 # Maxwell Render Toolbox - A Python Based Pipeline Automation Suite #
 ----
-**Version 0.1.4** - Released 2015-12-14  
+**Version 0.1.5** - Released 2016-01-31  
 by Andrew Hazelden  
 
 Twitter: [@AndrewHazelden](https://twitter.com/andrewhazelden)  
@@ -21,6 +21,7 @@ Google+: [plus.google.com/+AndrewHazelden/](https://plus.google.com/+AndrewHazel
   - [MXS to Render](mxs2render.html)
   - [MXI to Anaglyph](mxi2anaglyph.html)
   - [MXI to GearVR Cubic Panorama Converter](mxi2gearvrcube.html)
+  - MXS Folder Merge
   - [MXI to Google Photosphere](mxi2photosphere.html)
 - [Version History](version_history.html#version-history)
 - [Supporting Open Source Libraries](opensource_tools.html)
