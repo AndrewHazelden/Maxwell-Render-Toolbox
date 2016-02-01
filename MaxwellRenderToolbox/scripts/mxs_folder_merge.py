@@ -1,6 +1,6 @@
 # MXS Folder Merge for PyMaxwell
 # ---------------------------------
-# 2015-12-24 17.34 PM
+# 2016-01-31 20.15 PM
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -227,8 +227,8 @@ if __name__ == "__main__":
   # Build a list of Maxwell MXS Files to Merge
   # ------------------------------------------
 
-  mxsFilePath = '/Applications/MaxwellRenderToolbox/examples/mxs_merge/'
-  # mxsFilePath = 'C:/Program Files/MaxwellRenderToolbox/examples/mxs_merge/'
+  # mxsFilePath = '/Applications/MaxwellRenderToolbox/examples/mxs_merge/'
+  mxsFilePath = 'C:/Program Files/MaxwellRenderToolbox/examples/mxs_merge/'
   # mxsFilePath = '/opt/MaxwellRenderToolbox/examples/mxs_merge/'
 
   mxsOutputFilenamePrefix = 'coil_scene'

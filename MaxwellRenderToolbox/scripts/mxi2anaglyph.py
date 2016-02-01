@@ -1,6 +1,6 @@
 # MXI to Anaglyph Stereo Converter for Maxwell Studio
 # ----------------------------------------------------------
-# 2015-12-13 08.51 AM v0.1
+# 2016-01-31 20.15 PM v0.1
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com

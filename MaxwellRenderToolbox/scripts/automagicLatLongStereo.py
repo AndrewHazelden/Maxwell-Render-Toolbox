@@ -1,6 +1,6 @@
 # Automagic LatLong Stereo for Maxwell Studio
 # --------------------------------------------
-# 2015-12-12 07.13 AM v0.4
+# 2016-01-31 20.15 PM v0.4
 # By Andrew Hazelden 
 # Email: andrew@andrewhazelden.com
 # Blog: http://www.andrewhazelden.com
@@ -424,7 +424,7 @@ if __name__ == "__main__":
 
   # Choose a LatLong Stereo Separation Texture Map:
   # separationTexturePath = '/Applications/MaxwellRenderToolbox/sourceimages/separation_map.png'
-  separationTexturePath = 'C:/Program Files//MaxwellRenderToolbox/sourceimages/separation_map.png'
+  separationTexturePath = 'C:/Program Files/MaxwellRenderToolbox/sourceimages/separation_map.png'
   # separationTexturePath = '/opt/MaxwellRenderToolbox/sourceimages/separation_map.png'
   # separationTexturePath = '/home/andrew/MaxwellRenderToolbox/sourceimages/separation_map.png'
 
