@@ -86,7 +86,7 @@ http://djv.sourceforge.net/
 */
 
 
-print("PanoView for Maxwell Render v1.0.3");
+print("PanoView for Maxwell Render v1.0.4");
 print("By Andrew Hazelden");
 
 // Find out the current operating system platform. The platform variable should be set to either "Windows", "Mac", or "Linux".
