@@ -2,10 +2,8 @@
 ----   
 by Andrew Hazelden  
 
-Twitter: [@AndrewHazelden](https://twitter.com/andrewhazelden)  
 Email: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)  
 Web: [www.andrewhazelden.com](http://www.andrewhazelden.com)  
-Google+: [plus.google.com/+AndrewHazelden/](https://plus.google.com/+AndrewHazelden/)  
 
 
 ## <a name="support"></a>Support ##
